@@ -1,12 +1,12 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * File       calendar_download.php
+ * Created    1/17/14 12:29 PM
+ * Author     Keith Grimes | webmaster@wiltsswindonramblers.org.uk | http://wiltsswindonramblers.org.uk
+ * Support    
+ * License    GNU General Public License version 2, or later.
  */
-//set error handler
-//set_error_handler("customError");
 
 // Get the values within the Form Post
 $output = $_POST["icsdata"];
