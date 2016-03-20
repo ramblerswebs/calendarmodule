@@ -8,11 +8,111 @@
 
 div.ra_calendar_download
 {
-    margin-left: 5px ;
-    margin-right: 5px;
-    color:blue;
+    margin-left:10px;
+    margin-right:10px;
 }
-div.ra_calendar_download
+div.ra_calendar_download div.error
 {
-    color:blue;
+    color:red;
 }
+div.ra_calendar_download div.textdescription
+{
+    font-weight:normal;
+}
+
+div.ra_calendar_download label
+{
+    font-weight:bold;
+    text-decoration: underline;
+}
+
+div.ra_calendar_download input[type=submit]
+{
+    padding:5px 15px; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+div.ra_calendar_download table,
+div.ra_calendar_download table tr, 
+div.ra_calendar_download table tr td
+{
+    border:0;
+}
+
+.ui-datepicker table thead th {
+        background-color:silver;
+        color:black;
+    }
+    
+div.ra_calendar_download a,
+div.ra_calendar_download label {color:#007A87;}
+div.ra_calendar_download input[type=submit] {
+        background:#007A87; 
+        color: #ffffff;
+    }
+
+div.ramod_outline0110 div.ra_calendar_download a,
+div.ramod_outline0110 div.ra_calendar_download label {color:#D7A900;}
+div.ramod_outline0110 div.ra_calendar_download input[type=submit] {
+        background:#D7A900; 
+        color: #ffffff;
+    }
+
+div.ramod_outline0159 div.ra_calendar_download a,
+div.ramod_outline0159 div.ra_calendar_download label {color:#C75B12;}
+div.ramod_outline0159 div.ra_calendar_download input[type=submit] {
+        background:#C75B12; 
+        color: #ffffff;
+    }
+
+div.ramod_outline0186 div.ra_calendar_download a,
+div.ramod_outline0186 div.ra_calendar_download label {color:#C60C30;}
+div.ramod_outline0186 div.ra_calendar_download input[type=submit] {
+        background:#C60C30; 
+        color: #ffffff;
+    }
+div.ramod_outline0555 div.ra_calendar_download a,
+div.ramod_outline0555 div.ra_calendar_download label {color:#206C49;}
+div.ramod_outline0555 div.ra_calendar_download input[type=submit] {
+        background:#206C49; 
+        color: #ffffff;
+    }
+
+div.ramod_outline0583 div.ra_calendar_download a,
+div.ramod_outline0583 div.ra_calendar_download label {color:#A8B400;}
+div.ramod_outline0583 div.ra_calendar_download input[type=submit] {
+        background:#A8B400; 
+        color: #ffffff;
+    }
+
+div.ramod_outline1815 div.ra_calendar_download a,
+div.ramod_outline1815 div.ra_calendar_download label {color:#782327;}
+div.ramod_outline1815 div.ra_calendar_download input[type=submit] {
+        background:#782327; 
+        color: #ffffff;
+    }
+
+div.ramod_outline4485 div.ra_calendar_download a,
+div.ramod_outline4485 div.ra_calendar_download label {color:#5B491F;}
+div.ramod_outline4485 div.ra_calendar_download input[type=submit] {
+        background:#5B491F; 
+        color: #ffffff;
+    }
+
+div.ramod_outline7474 div.ra_calendar_download a,
+div.ramod_outline7474 div.ra_calendar_download label {color:#007A87;}
+div.ramod_outline7474 div.ra_calendar_download input[type=submit] {
+        background:#007A87; 
+        color: #ffffff;
+    }
+
+div.ramod_outline5565 div.ra_calendar_download a,
+div.ramod_outline5565 div.ra_calendar_download label {color:#8BA69C;}
+div.ramod_outline5565 div.ra_calendar_download input[type=submit] {
+        background:#8BA69C; 
+        color: #ffffff;
+    }
+
