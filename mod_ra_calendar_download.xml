@@ -2,7 +2,7 @@
 <extension type="module" version="3.0" client="site" method="upgrade">
     <name>Ramblers Calendar Download</name>
     <creationDate>March 2, 2016</creationDate>
-    <author>Keith Grimes (Wiltshire Area Ramblers)</author>
+    <author>Keith Grimes (Wiltshire Ramblers)</author>
     <authorUrl>http://www.wiltsswindonramblers.org.uk</authorUrl>
     <authorEmail>webmaster@wiltsswindonramblers.org.uk</authorEmail>
     <copyright>Copyright (C) 2016 Wiltshire Ramblers</copyright>
@@ -51,16 +51,16 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
-              <field name="groupSelection" type="text" default="Please select your group" size="100" label="GROUP_SELECTION"/>
-              <field name="buttonText" type="text" default="Download" size="100" label="BUTTON_TEXT"/>
+              <field name="id" type="text" default="iCal" size="100" label="ID_TEXT" description="ID_DESC"/>
               <field name="groups" type="sql"
                 label="Select Groups to Display"
                 description="" multiple="true" default="AV01"
                 query="SELECT description AS value, code FROM #__ra_groups">
               </field>
-              <field name="moduleclass_sfx" type="text" default="" label="MOD_ICAL_MODULE_CLASS_SUFFIX" description="MOD_ICAL_MODULE_CLASS_SUFFIX_DESC" />
+              <field name="buttonText" type="text" default="Download" size="100" label="BUTTON_TEXT"/>
               <field name="leadingText" type="textarea" default="Leading Text" rows="5" cols="20" label="PRE_TEXT"/>
               <field name="trailingText" type="textarea" default="Trailing Text" rows="5" cols="20" label="POST_TEXT"/>
+              <field name="moduleclass_sfx" type="text" default="" label="MOD_ICAL_MODULE_CLASS_SUFFIX" description="MOD_ICAL_MODULE_CLASS_SUFFIX_DESC" />
             </fieldset>
         </fields>
     </config>

@@ -4,8 +4,7 @@
  * File       mod_ra_calendar_download.php
  * Created    1/17/14 12:29 PM
  * Author     Keith Grimes | webmaster@wiltsswindonramblers.org.uk | http://wiltsswindonramblers.org.uk
- * Support    https://github.com/Joomla-Ajax-Interface/Hello-Ajax-World-Module/issues
- * Copyright  Copyright (C) 2013 betweenbrain llc. All Rights Reserved.
+ * Support    
  * License    GNU General Public License version 2, or later.
  */
 
@@ -18,8 +17,22 @@ $doc = JFactory::getDocument();
 $js = <<<JS
 (function ($) {
 	$(document).on('click', 'input[type=submit]', function () {
-                // Define the information for the call
-                var value   = $('#group').val() + '.' + $('input[name=fromdate]').val() + '.' + $('input[name=todate]').val() ,
+                var dateMask = 0;
+                dateMask = dateMask + ($('input[name=monday]').is(':checked') * 1); 
+                dateMask = dateMask + ($('input[name=tuesday]').is(':checked') * 2); 
+                dateMask = dateMask + ($('input[name=wednesday]').is(':checked') * 4); 
+                dateMask = dateMask + ($('input[name=thursday]').is(':checked') * 8); 
+                dateMask = dateMask + ($('input[name=friday]').is(':checked') * 16); 
+                dateMask = dateMask + ($('input[name=saturday]').is(':checked') * 32); 
+                dateMask = dateMask + ($('input[name=sunday]').is(':checked') * 64); 
+                
+                var gradeMask = 0;
+                gradeMask = gradeMask + ($('input[name=leisurely]').is(':checked') * 1); 
+                gradeMask = gradeMask + ($('input[name=easy]').is(':checked') * 2); 
+                gradeMask = gradeMask + ($('input[name=moderate]').is(':checked') * 4); 
+                gradeMask = gradeMask + ($('input[name=strenuous]').is(':checked') * 8); 
+
+                var value   = $('#group').val() + '-' + $('input[name=fromdate]').val() + '-' + $('input[name=todate]').val() + '-' + dateMask + '-' + gradeMask + '-' + jQuery( "#slider-range" ).slider( "values", 0 ) + '-' + jQuery( "#slider-range" ).slider( "values", 1 )  ,
                     request = {
 					'option' : 'com_ajax',
 					'module' : 'ra_calendar_download',

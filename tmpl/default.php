@@ -4,8 +4,7 @@
  * File       default.php
  * Created    1/17/14 12:29 PM
  * Author     Keith Grimes | webmaster@wiltsswindonramblers.org.uk | http://wiltsswindonramblers.org.uk
- * Support    TBD
- * Copyright  Copyright (C) 2013 betweenbrain llc. All Rights Reserved.
+ * Support    
  * License    GNU General Public License version 2, or later.
  */
 
@@ -17,42 +16,82 @@ JHtml::_('jquery.framework');
 $document = JFactory::getDocument();
 $document->addScript('http://code.jquery.com/ui/1.10.3/jquery-ui.js');
 $document->addStyleSheet('http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css', 'text/css');
+$document->addStyleSheet(JURI::base() . 'modules/mod_ra_calendar_download/scripts/css/ra_calendar_download.css', 'text/css');
 
 // Add the script to enable datepicker
 $document->addScript(JURI::base() . 'modules/mod_ra_calendar_download/scripts/js/datepicker.js', "text/javascript");
 
 // Get the configuration which was entered by the administrator
-$introduction = $params->get('groupSelection');
 $leadingText = $params->get('leadingText');
 $trailingText = $params->get('trailingText');
 $buttonText = $params->get('buttonText');
 $ramblers_groups = $params->get('groups');
-
+$class = $params->get('moduleclass_sfx');
 
 ?>
-<div> <?php echo($leadingText); ?> </div>
-<div> <?php echo($introduction); ?> </div>
-<form>
-    <select id="group" name="group">
-        <?php
-            // Now we need to add the groups into the list.
-            $count = count($ramblers_groups);
-            for ($i = 0; $i < $count; $i++) {
-                $current_group = $ramblers_groups[$i];
-                $group_parts = explode(':',$current_group);
-                echo('<option value="' . $group_parts[0] . '">' . $group_parts[1] . '</option>');
-            }
-        ?>
-    </select>
-    <input type="text" id="from_datepicker" name="fromdate" value="07/03/2016">
-    <input type="text" id="to_datepicker" name="todate" value="21/03/2016">
+<div class="ra_calendar_download">
+    <div> <?php echo($leadingText); ?> </div>
     <br/>
-    <input type="submit" value=" <?php echo($buttonText) ?> " />
-</form>
-<div> <?php echo($trailingText); ?> </div>
-<div class='error'></div>
-<div style="display:none">
-    <form id="finalstage" action="/modules/mod_ra_calendar_download/calendar_download.php" method="POST">
-        <textarea id="icsdata" name="icsdata"></textarea>
+    <form>
+        <div class="item">
+            <input type="submit" value="<?php echo($buttonText) ?>" />
+            <a href="#" class="more_options" style="text-align: right">More Options...</a>
+            <span class="download_details" style="display:none">
+                <br/><br/>
+                <label for="group">Ramblers Group</label>
+                <select id="group" name="group">
+                    <?php
+                        // Now we need to add the groups into the list.
+                        $count = count($ramblers_groups);
+                        for ($i = 0; $i < $count; $i++) {
+                            $current_group = $ramblers_groups[$i];
+                            $group_parts = explode(':',$current_group);
+                            echo('<option value="' . $group_parts[0] . '">' . $group_parts[1] . '</option>');
+                        }
+                    ?>
+                </select>
+                <label for="from_datepicker">Date Duration</label>
+                <input type="text" id="from_datepicker" name="fromdate" value="07/03/2016">
+                <input type="text" id="to_datepicker" name="todate" value="21/03/2016">
+                <label>Walking Days & Grades</label>
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tr border="0">
+                        <td border="0">
+                            <div>Day of Week</div>
+                            <span>
+                                <input type="checkbox" name="monday" checked="true" value="1">Monday</input><br/>
+                                <input type="checkbox" name="tuesday" checked="true" value="2">Tuesday</input><br/>
+                                <input type="checkbox" name="wednesday" checked="true" value="4">Wednesday</input><br/>
+                                <input type="checkbox" name="thursday" checked="true" value="8">Thursday</input><br/>
+                                <input type="checkbox" name="friday" checked="true" value="16">Friday</input><br/>
+                                <input type="checkbox" name="saturday" checked="true" value="32">Saturday</input><br/>
+                                <input type="checkbox" name="sunday" checked="true" value="64">Sunday</input>
+                            </span>
+                        </td>
+                        <td border="0">
+                            <div>Grade</div>
+                            <span>
+                                <input type="checkbox" name="leisurely" checked="true" value="1">Leisurely</input><br/>
+                                <input type="checkbox" name="easy" checked="true" value="2">Easy</input><br/>
+                                <input type="checkbox" name="moderate" checked="true" value="4">Moderate</input><br/>
+                                <input type="checkbox" name="strenuous" checked="true" value="8">Strenuous</input><br/>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                  <label for="distance">Walk Distance:</label>
+                  <input type="text" id="distance" readonly style="border:0">
+                </div>
+                <div id="slider-range"></div>
+            </span>
+        </div>
     </form>
+    <div> <?php echo($trailingText); ?> </div>
+    <div class='error'></div>
+    <div style="display:none">
+        <form id="finalstage" action="/modules/mod_ra_calendar_download/calendar_download.php" method="POST">
+            <textarea id="icsdata" name="icsdata"></textarea>
+        </form>
+    </div>
 </div>
