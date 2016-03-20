@@ -19,7 +19,7 @@ $document->addStyleSheet('http://code.jquery.com/ui/1.10.3/themes/smoothness/jqu
 $document->addStyleSheet(JURI::base() . 'modules/mod_ra_calendar_download/scripts/css/ra_calendar_download.css', 'text/css');
 
 // Add the script to enable datepicker
-$document->addScript(JURI::base() . 'modules/mod_ra_calendar_download/scripts/js/datepicker.js', "text/javascript");
+$document->addScript(JURI::base() . 'modules/mod_ra_calendar_download/scripts/js/ra_calendar_download.js', "text/javascript");
 
 // Get the configuration which was entered by the administrator
 $leadingText = $params->get('leadingText');
@@ -30,16 +30,11 @@ $class = $params->get('moduleclass_sfx');
 
 ?>
 <div class="ra_calendar_download">
-    <div> <?php echo($leadingText); ?> </div>
-    <br/>
+    <div class="leadingtext textdescription"> <?php echo($leadingText); ?> </div>
     <form>
-        <div class="item">
-            <input type="submit" value="<?php echo($buttonText) ?>" />
-            <a href="#" class="more_options" style="text-align: right">More Options...</a>
-            <span class="download_details" style="display:none">
-                <br/><br/>
-                <label for="group">Ramblers Group</label>
-                <select id="group" name="group">
+        <span class="item">
+            <span class="groupselection">
+                <select id="group" name="group" style="margin-top:5px">
                     <?php
                         // Now we need to add the groups into the list.
                         $count = count($ramblers_groups);
@@ -50,6 +45,11 @@ $class = $params->get('moduleclass_sfx');
                         }
                     ?>
                 </select>
+            </span>
+            <input type="submit" class="button" value="<?php echo($buttonText) ?>" />
+            <a href="#" class="more_options" style="text-align: right">More Options...</a>
+            <span class="download_details" style="display:none">
+                <br/><br/>
                 <label for="from_datepicker">Date Duration</label>
                 <input type="text" id="from_datepicker" name="fromdate" value="07/03/2016">
                 <input type="text" id="to_datepicker" name="todate" value="21/03/2016">
@@ -57,25 +57,19 @@ $class = $params->get('moduleclass_sfx');
                 <table border="0" cellpadding="0" cellspacing="0">
                     <tr border="0">
                         <td border="0">
-                            <div>Day of Week</div>
-                            <span>
-                                <input type="checkbox" name="monday" checked="true" value="1">Monday</input><br/>
-                                <input type="checkbox" name="tuesday" checked="true" value="2">Tuesday</input><br/>
-                                <input type="checkbox" name="wednesday" checked="true" value="4">Wednesday</input><br/>
-                                <input type="checkbox" name="thursday" checked="true" value="8">Thursday</input><br/>
-                                <input type="checkbox" name="friday" checked="true" value="16">Friday</input><br/>
-                                <input type="checkbox" name="saturday" checked="true" value="32">Saturday</input><br/>
-                                <input type="checkbox" name="sunday" checked="true" value="64">Sunday</input>
-                            </span>
+                            <input type="checkbox" name="monday" checked="true" value="1">Monday</input><br/>
+                            <input type="checkbox" name="tuesday" checked="true" value="2">Tuesday</input><br/>
+                            <input type="checkbox" name="wednesday" checked="true" value="4">Wednesday</input><br/>
+                            <input type="checkbox" name="thursday" checked="true" value="8">Thursday</input><br/>
+                            <input type="checkbox" name="friday" checked="true" value="16">Friday</input><br/>
+                            <input type="checkbox" name="saturday" checked="true" value="32">Saturday</input><br/>
+                            <input type="checkbox" name="sunday" checked="true" value="64">Sunday</input>
                         </td>
                         <td border="0">
-                            <div>Grade</div>
-                            <span>
-                                <input type="checkbox" name="leisurely" checked="true" value="1">Leisurely</input><br/>
-                                <input type="checkbox" name="easy" checked="true" value="2">Easy</input><br/>
-                                <input type="checkbox" name="moderate" checked="true" value="4">Moderate</input><br/>
-                                <input type="checkbox" name="strenuous" checked="true" value="8">Strenuous</input><br/>
-                            </span>
+                            <input type="checkbox" name="leisurely" checked="true" value="1">Leisurely</input><br/>
+                            <input type="checkbox" name="easy" checked="true" value="2">Easy</input><br/>
+                            <input type="checkbox" name="moderate" checked="true" value="4">Moderate</input><br/>
+                            <input type="checkbox" name="strenuous" checked="true" value="8">Strenuous</input><br/>
                         </td>
                     </tr>
                 </table>
@@ -85,9 +79,9 @@ $class = $params->get('moduleclass_sfx');
                 </div>
                 <div id="slider-range"></div>
             </span>
-        </div>
+        </span>
     </form>
-    <div> <?php echo($trailingText); ?> </div>
+    <div class="trailingtext textdescription"> <?php echo($trailingText); ?> </div>
     <div class='error'></div>
     <div style="display:none">
         <form id="finalstage" action="/modules/mod_ra_calendar_download/calendar_download.php" method="POST">
