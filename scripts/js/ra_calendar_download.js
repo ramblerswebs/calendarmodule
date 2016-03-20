@@ -25,10 +25,12 @@ jQuery(function($) {
                 dateMask = dateMask + ($('input[name=sunday]').is(':checked') * 64); 
                 
                 var gradeMask = 0;
-                gradeMask = gradeMask + ($('input[name=leisurely]').is(':checked') * 1); 
+                gradeMask = gradeMask + ($('input[name=easyaccess]').is(':checked') * 1); 
                 gradeMask = gradeMask + ($('input[name=easy]').is(':checked') * 2); 
-                gradeMask = gradeMask + ($('input[name=moderate]').is(':checked') * 4); 
-                gradeMask = gradeMask + ($('input[name=strenuous]').is(':checked') * 8); 
+                gradeMask = gradeMask + ($('input[name=leisurely]').is(':checked') * 4); 
+                gradeMask = gradeMask + ($('input[name=moderate]').is(':checked') * 8); 
+                gradeMask = gradeMask + ($('input[name=strenuous]').is(':checked') * 16); 
+                gradeMask = gradeMask + ($('input[name=technical]').is(':checked') * 32); 
 
                 var value   = $('#group').val() + '-' + $('input[name=fromdate]').val() + '-' + $('input[name=todate]').val() + '-' + dateMask + '-' + gradeMask + '-' + jQuery( "#slider-range" ).slider( "values", 0 ) + '-' + jQuery( "#slider-range" ).slider( "values", 1 )  ,
                     request = {

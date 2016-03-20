@@ -66,10 +66,12 @@ $class = $params->get('moduleclass_sfx');
                             <input type="checkbox" name="sunday" checked="true" value="64">Sunday</input>
                         </td>
                         <td border="0">
-                            <input type="checkbox" name="leisurely" checked="true" value="1">Leisurely</input><br/>
+                            <input type="checkbox" name="easyaccess" checked="true" value="1">Easy Access</input><br/>
                             <input type="checkbox" name="easy" checked="true" value="2">Easy</input><br/>
-                            <input type="checkbox" name="moderate" checked="true" value="4">Moderate</input><br/>
-                            <input type="checkbox" name="strenuous" checked="true" value="8">Strenuous</input><br/>
+                            <input type="checkbox" name="leisurely" checked="true" value="4">Leisurely</input><br/>
+                            <input type="checkbox" name="moderate" checked="true" value="8">Moderate</input><br/>
+                            <input type="checkbox" name="strenuous" checked="true" value="16">Strenuous</input><br/>
+                            <input type="checkbox" name="technical" checked="true" value="32">Technical</input><br/>
                         </td>
                     </tr>
                 </table>
