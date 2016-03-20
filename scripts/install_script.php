@@ -15,40 +15,41 @@ class mod_ra_calendar_downloadInstallerScript
 	 */
 	function install($parent)
 	{
-    // Get a db connection.
-    $db = JFactory::getDbo();
+            echo '<p>Please wait while we download/update the current Ramblers Area & Group Information</p>';
+            // Get a db connection.
+            $db = JFactory::getDbo();
 
 
-		// Now we need to get the Group information
-	  $ra_feed = new RJsongroupsFeed("http://www.ramblers.org.uk/api/lbs/groups/");
-		$groups = $ra_feed->getGroups()->allGroups();
-		foreach ($groups as $group)
-		{
-                    // Insert values.
-                    if ($group->groupScope == 'G' || $group->groupScope == 'S')
-                    {
-											// Create a new query object.
-									    $query = $db->getQuery(true);
-											// Insert columns.
-									     $columns = array('code', 'description');
-                        $values = array($db->quote($group->groupCode), $db->quote($group->groupCode . ':' . $group->groupName));
+            // Now we need to get the Group information
+            $ra_feed = new RJsongroupsFeed("http://www.ramblers.org.uk/api/lbs/groups/");
+            $groups = $ra_feed->getGroups()->allGroups();
+            foreach ($groups as $group)
+            {
+                // Insert values.
+                if ($group->groupScope == 'G' || $group->groupScope == 'S')
+                {
+                    // Create a new query object.
+                    $query = $db->getQuery(true);
+                    // Insert columns.
+                     $columns = array('code', 'description');
+                    $values = array($db->quote($group->groupCode), $db->quote($group->groupCode . ':' . $group->groupName));
 
-                        // Prepare the insert query.
-                        $query
-                            ->insert($db->quoteName('#__ra_groups'))
-                            ->columns($db->quoteName($columns))
-                            ->values(implode(',', $values));
+                    // Prepare the insert query.
+                    $query
+                        ->insert($db->quoteName('#__ra_groups'))
+                        ->columns($db->quoteName($columns))
+                        ->values(implode(',', $values));
 
-                        // Set the query using our newly populated query object and execute it.
-                        $db->setQuery($query);
-                        $db->execute();
+                    // Set the query using our newly populated query object and execute it.
+                    $db->setQuery($query);
+                    $db->execute();
 
-											  unset($columns);
-												unset($values);
-												unset($query);
-                    }
-		}
-		echo '<p>Ramblers Group Codes have been updated.</p>';
+                    unset($columns);
+                    unset($values);
+                    unset($query);
+                }
+            }
+            echo '<p>Ramblers Group Codes have been updated.</p>';
 	}
 
 	/**
@@ -70,8 +71,20 @@ class mod_ra_calendar_downloadInstallerScript
 	 */
 	function update($parent)
 	{
-		echo '<p>The module has been updated to version' . $parent->get('manifest')->version . '</p>';
-	}
+            $db = JFactory::getDbo();
+            
+            // First Delete all the records
+            $query = $db->getQuery(true);
+            $query->delete($db->quoteName('#__ra_groups'));
+            $db->setQuery($query);
+            $result = $db->execute();
+            unset($result);
+            unset($query);
+            unset($db);
+            
+            // Re-install the groups
+            $this->install($parent);
+        }
 
 	/**
 	 * Method to run before an install/update/uninstall method
@@ -82,7 +95,7 @@ class mod_ra_calendar_downloadInstallerScript
 	 */
 	function preflight($type, $parent)
 	{
-		//echo '<p>Anything here happens before the installation/update/uninstallation of the module</p>';
+		// echo '<p>Anything here happens before the installation/update/uninstallation of the module</p>';
 	}
 
 	/**

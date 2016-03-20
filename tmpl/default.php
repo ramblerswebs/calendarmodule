@@ -33,7 +33,7 @@ $class = $params->get('moduleclass_sfx');
     <div class="leadingtext textdescription"> <?php echo($leadingText); ?> </div>
     <form>
         <span class="item">
-            <span class="groupselection">
+            <div class="groupselection">
                 <select id="group" name="group" style="margin-top:5px">
                     <?php
                         // Now we need to add the groups into the list.
@@ -45,7 +45,7 @@ $class = $params->get('moduleclass_sfx');
                         }
                     ?>
                 </select>
-            </span>
+            </div>
             <input type="submit" class="button" value="<?php echo($buttonText) ?>" />
             <a href="#" class="more_options" style="text-align: right">More Options...</a>
             <span class="download_details" style="display:none">
@@ -84,7 +84,7 @@ $class = $params->get('moduleclass_sfx');
     <div class="trailingtext textdescription"> <?php echo($trailingText); ?> </div>
     <div class='error'></div>
     <div style="display:none">
-        <form id="finalstage" action="/modules/mod_ra_calendar_download/calendar_download.php" method="POST">
+        <form id="finalstage" action="<?php echo JURI::root() ?>modules/mod_ra_calendar_download/calendar_download.php" method="POST">
             <textarea id="icsdata" name="icsdata"></textarea>
         </form>
     </div>
