@@ -7,9 +7,16 @@
  * License    GNU General Public License version 2, or later.
  */
 class modRaCalendarDownloadHelper
-{    
+{
+    function customError($errno, $errstr) {
+        return "Error Raised: " . $errstr ;
+    }    
+
     public static function getAjax()
     {
+        // Ensure we have a custom Error Handler.
+        set_error_handler("customError");
+        
         $input = JFactory::getApplication()->input;
         $data  = $input->get('data');
 

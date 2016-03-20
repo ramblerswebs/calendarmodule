@@ -76,13 +76,9 @@ jQuery(function($) {
     /*
      * Now format the datepicker displays
      * Not sure we need the code under here.
-    jQuery( "#from_datepicker" ).datepicker({
-            beforeShow: function(input, inst) {
-                            $('#ui-datepicker-div').removeClass(function() {return $('input').get(0).id;});
-                            $('#ui-datepicker-div').addClass("myClass");
-                    }}   
-            );
     */
+    jQuery( "#to_datepicker" ).datepicker();
+    jQuery( "#from_datepicker" ).datepicker();
     jQuery( "#from_datepicker" ).datepicker( "setDate", "+0" );
     jQuery( "#from_datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
     jQuery( "#to_datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
