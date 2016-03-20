@@ -35,6 +35,11 @@ div.ra_calendar_download input[type=submit]
     border-radius: 5px; 
 }
 
+div.ra_calendar_download input[type=text]
+{
+    box-shadow: none;
+}
+
 div.ra_calendar_download table,
 div.ra_calendar_download table tr, 
 div.ra_calendar_download table tr td

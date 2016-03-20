@@ -7,9 +7,16 @@
  * License    GNU General Public License version 2, or later.
  */
 class modRaCalendarDownloadHelper
-{    
+{
+    function customError($errno, $errstr) {
+        return "Error Raised: " . $errstr ;
+    }    
+
     public static function getAjax()
     {
+        // Ensure we have a custom Error Handler.
+        set_error_handler("customError");
+        
         $input = JFactory::getApplication()->input;
         $data  = $input->get('data');
 
@@ -61,10 +68,12 @@ class modRaCalendarDownloadHelper
             $walks->filterDayofweek($arrayofDays); 
 
             // Filter walks based on walk grade
-            if ($gradeMask & 1) {$arrayofGrades[] = "Leisurely";}
+            if ($gradeMask & 1) {$arrayofGrades[] = "Easy Access";}
             if ($gradeMask & 2) {$arrayofGrades[] = "Easy";}
-            if ($gradeMask & 4) {$arrayofGrades[] = "Moderate";}
-            if ($gradeMask & 8) {$arrayofGrades[] = "Strenuous";}
+            if ($gradeMask & 4) {$arrayofGrades[] = "Leisurely";}
+            if ($gradeMask & 8) {$arrayofGrades[] = "Moderate";}
+            if ($gradeMask & 16) {$arrayofGrades[] = "Strenuous";}
+            if ($gradeMask & 32) {$arrayofGrades[] = "Technical";}
 
             $walks->filterNationalGrade($arrayofGrades);
 
