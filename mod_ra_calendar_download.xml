@@ -44,7 +44,8 @@
     </update>
 <!--
     <updateservers>
-        <server type="extension" name="RA Calendar Download" priority="1">https://github.com/ramblerswebs/calendarmodule/blob/master/mod_ra_calendar_download.xml</server>
+        <server type="extension" name="RA Calendar Download" priority="1">http://update.ramblers-wilts.org.uk/mod_ical_update.xml</server>
+        <server type="extension" name="RA Calendar Download" priority="2">http://update.wiltsswindonramblers.org.uk/mod_ical_update.xml</server>
     </updateservers>
 -->
     <config>

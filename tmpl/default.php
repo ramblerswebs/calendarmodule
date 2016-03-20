@@ -84,7 +84,7 @@ $class = $params->get('moduleclass_sfx');
     <div class="trailingtext textdescription"> <?php echo($trailingText); ?> </div>
     <div class='error'></div>
     <div style="display:none">
-        <form id="finalstage" action="/modules/mod_ra_calendar_download/calendar_download.php" method="POST">
+        <form id="finalstage" action="<?php echo JURI::root() ?>modules/mod_ra_calendar_download/calendar_download.php" method="POST">
             <textarea id="icsdata" name="icsdata"></textarea>
         </form>
     </div>

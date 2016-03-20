@@ -7,6 +7,13 @@
  */
 
 jQuery(function($) {
+        /*
+         * Create a function to handle the click event of the form.
+         * This function needs to collate the information and submit to an Ajax call to the server. 
+         * The response is the ICS information or a message.
+         * Once the response is recieved it is stored in a form and submitted to calendar_download.php
+         * which returns if with the correct html headers set. 
+         */
 	$(document).on('click', 'input[type=submit]', function () {
                 var dateMask = 0;
                 dateMask = dateMask + ($('input[name=monday]').is(':checked') * 1); 
@@ -48,11 +55,15 @@ jQuery(function($) {
                                 // Write the error out for the user
                                 $('.error').html(response);
                             }
-   }
+                        }
             });
             return false;
 	});
-    
+
+    /*
+     * We need to ensure that the select option for the group is not displayed
+     * if there is only one item to display.
+     */
     if ($('#group').children('option').length == 1)
     {
         $('#group').hide();
@@ -61,32 +72,43 @@ jQuery(function($) {
     {
         $('#group').show();
     }
-    
+
+    /*
+     * Now format the datepicker displays
+     * Not sure we need the code under here.
     jQuery( "#from_datepicker" ).datepicker({
             beforeShow: function(input, inst) {
                             $('#ui-datepicker-div').removeClass(function() {return $('input').get(0).id;});
                             $('#ui-datepicker-div').addClass("myClass");
                     }}   
             );
-    jQuery( "#to_datepicker" ).datepicker();
+    */
+    jQuery( "#from_datepicker" ).datepicker( "setDate", "+0" );
     jQuery( "#from_datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
     jQuery( "#to_datepicker" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
-    jQuery( "#from_datepicker" ).datepicker( "setDate", "+0" );
     jQuery( "#to_datepicker" ).datepicker( "setDate", "+365" );
-    jQuery.ui.slider.prototype.widgetEventPrefix = 'slider';
 
+    /*
+     * Now customise the distance slider
+     * The first line ensures it is displayed correctly.
+     */
+    jQuery.ui.slider.prototype.widgetEventPrefix = 'slider';
     jQuery( "#slider-range" ).slider(
      {
       animate: "fast",
       range: true,
       min: 0,
-      max: 20,
+      max: 30,
       step: 0.5,
-      values: [ 1, 15 ],
+      values: [ 1, 25 ],
       slide: function( event, ui ) {jQuery( "#distance" ).val( ui.values[ 0 ] + " miles - " + ui.values[ 1 ] + " miles" );}
      });
     jQuery( "#distance" ).val(jQuery( "#slider-range" ).slider( "values", 0 ) + " miles - " + jQuery( "#slider-range" ).slider( "values", 1 ) + " miles" );
 
+    /*
+     * Now add some jQuery to support the div event for More Options. 
+     * This needs to ensure it hides/shows the correct div for extra details. 
+     */
     $('a.more_options').click(function(event)
     { /* find all a.read_more elements and bind the following code to them */
         event.preventDefault(); /* prevent the a from changing the url */
