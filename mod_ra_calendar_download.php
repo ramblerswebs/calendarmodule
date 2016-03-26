@@ -81,9 +81,13 @@ jQuery(function ($) {
                 type   : 'POST',
                 data   : request,
                 success: function (response) {
+                        // Update the field which will be submitted
                         $('textarea#icsdata').val(response);
                         if ($('textarea#icsdata').val().substring(0,5) === "BEGIN")
                         {
+                            // Can you determine how many walks have been downloaded?
+        
+                            // Tell the user their walks are being downloaded
                             $('#error').html('Your walks are being downloaded.');
                             // valid response so submit the form
                             $('form#finalstage').submit();
@@ -142,7 +146,7 @@ jQuery(function ($) {
 });
 JS;
 
-/* Now replace some of the ID values */
+/* Now replace some of the ID values to ensure it is a unique instance */
 $js = str_ireplace('fromdate', $ID . '_fromdate', $js );
 $js = str_ireplace('to_datepicker', $ID . '_to_datepicker', $js );
 $js = str_ireplace('from_datepicker', $ID . '_from_datepicker', $js );
