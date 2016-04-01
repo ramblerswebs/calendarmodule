@@ -42,12 +42,9 @@
             <schemapath type="mysql">sql/mysql/updates</schemapath>
         </schemas>
     </update>
-<!--
     <updateservers>
-        <server type="extension" name="RA Calendar Download" priority="1">http://update.ramblers-wilts.org.uk/mod_ical_update.xml</server>
-        <server type="extension" name="RA Calendar Download" priority="2">http://update.wiltsswindonramblers.org.uk/mod_ical_update.xml</server>
+        <server type="extension" name="RA Calendar Download" priority="1">https://raw.githubusercontent.com/ramblerswebs/updates/master/updates/ra-calendar-module.xml</server>
     </updateservers>
--->
     <config>
         <fields name="params">
             <fieldset name="basic">
