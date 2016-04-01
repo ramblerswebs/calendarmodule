@@ -9,7 +9,7 @@
 class modRaCalendarDownloadHelper
 {
     function customError($errno, $errstr) {
-        return "Error Raised: " . $errstr ;
+        return "Error (" . $errno . ") Raised: " . $errstr ;
     }    
 
     public static function getAjax()
@@ -96,9 +96,6 @@ class modRaCalendarDownloadHelper
             return "No walks returned - Please check your dates are in the format dd/mm/yyyy (e.g. 07/02/2016)";
          }
 
-         header("Content-type:text/calendar");
-         header('Content-Disposition: attachment;filename="ramblers.ics"');
-         header('Content-Length: '.strlen($output));
          return $output ;
     }
 }

@@ -18,8 +18,15 @@ class mod_ra_calendar_downloadInstallerScript
             echo '<p>Please wait while we download/update the current Ramblers Area & Group Information</p>';
             // Get a db connection.
             $db = JFactory::getDbo();
+            
+            $delete_query = $db->getQuery(true);
+            $delete_query->delete($db->quoteName('#__ra_groups'));
+            $db->setQuery($delete_query);
+            $result = $db->execute();
 
-
+            unset($delete_query);
+            unset($result);
+            
             // Now we need to get the Group information
             $ra_feed = new RJsongroupsFeed("http://www.ramblers.org.uk/api/lbs/groups/");
             $groups = $ra_feed->getGroups()->allGroups();
