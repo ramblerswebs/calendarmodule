@@ -3,13 +3,13 @@
  * File       helper.php
  * Created    1/17/14 12:29 PM
  * Author     Keith Grimes | webmaster@wiltsswindonramblers.org.uk | http://wiltsswindonramblers.org.uk
- * Support    
+ * Support
  * License    GNU General Public License version 2, or later.
  */
 function customError($errno, $errstr, $errfile, $errline) {
     echo "Error (" . $errno . ") Raised: " . $errstr ;
-    return true;    
-}    
+    return true;
+}
 
 class modRaCalendarDownloadHelper
 {
@@ -31,6 +31,9 @@ class modRaCalendarDownloadHelper
         $gradeMask = $items[4];
         $distanceLow = $items[5];
         $distanceHigh = $items[6];
+
+        if ($dayMask == 0) { return 'Please select the days you wish to walk';}
+        if ($gradeMask == 0) { return 'Please select the grade of your walks' ;}
 
         $s_date = DateTime::createFromFormat('dmY', $startdate);
         $e_date = DateTime::createFromFormat('dmY', $enddate);
@@ -66,7 +69,7 @@ class modRaCalendarDownloadHelper
             if ($dayMask & 32) {$arrayofDays[] = "Saturday";}
             if ($dayMask & 64) {$arrayofDays[] = "Sunday";}
 
-            $walks->filterDayofweek($arrayofDays); 
+            $walks->filterDayofweek($arrayofDays);
 
             // Filter walks based on walk grade
             if ($gradeMask & 1) {$arrayofGrades[] = "Easy Access";}
