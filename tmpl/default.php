@@ -4,7 +4,7 @@
  * File       default.php
  * Created    1/17/14 12:29 PM
  * Author     Keith Grimes | webmaster@wiltsswindonramblers.org.uk | http://wiltsswindonramblers.org.uk
- * Support    
+ * Support
  * License    GNU General Public License version 2, or later.
  */
 
@@ -58,21 +58,21 @@ $class = $params->get('moduleclass_sfx');
                 <table border="0" cellpadding="0" cellspacing="0">
                     <tr border="0">
                         <td border="0">
-                            <input type="checkbox" name="<?php echo($ID) ?>_monday" checked="true" value="1">Monday</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_tuesday" checked="true" value="2">Tuesday</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_wednesday" checked="true" value="4">Wednesday</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_thursday" checked="true" value="8">Thursday</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_friday" checked="true" value="16">Friday</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_saturday" checked="true" value="32">Saturday</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_sunday" checked="true" value="64">Sunday</input>
+                            <input type="checkbox" name="<?php echo($ID) ?>_monday" checked="true" value="1">Monday<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_tuesday" checked="true" value="2">Tuesday<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_wednesday" checked="true" value="4">Wednesday<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_thursday" checked="true" value="8">Thursday<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_friday" checked="true" value="16">Friday<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_saturday" checked="true" value="32">Saturday<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_sunday" checked="true" value="64">Sunday
                         </td>
                         <td border="0">
-                            <input type="checkbox" name="<?php echo($ID) ?>_easyaccess" checked="true" value="1">Easy Access</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_easy" checked="true" value="2">Easy</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_leisurely" checked="true" value="4">Leisurely</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_moderate" checked="true" value="8">Moderate</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_strenuous" checked="true" value="16">Strenuous</input><br/>
-                            <input type="checkbox" name="<?php echo($ID) ?>_technical" checked="true" value="32">Technical</input><br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_easyaccess" checked="true" value="1">Easy Access<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_easy" checked="true" value="2">Easy<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_leisurely" checked="true" value="4">Leisurely<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_moderate" checked="true" value="8">Moderate<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_strenuous" checked="true" value="16">Strenuous<br/>
+                            <input type="checkbox" name="<?php echo($ID) ?>_technical" checked="true" value="32">Technical<br/>
                         </td>
                     </tr>
                 </table>
