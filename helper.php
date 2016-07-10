@@ -25,8 +25,8 @@ class modRaCalendarDownloadHelper
         // Dates are supplied in the format ddmmyyyy
         $items = explode('-', $data) ;
         $group = $items[0];
-        $startdate = $items[1];
-        $enddate = $items[2];
+        $startdate = $items[1] . '000000';
+        $enddate = $items[2] . '235959';
         $dayMask = $items[3];
         $gradeMask = $items[4];
         $distanceLow = $items[5];
@@ -35,8 +35,8 @@ class modRaCalendarDownloadHelper
         if ($dayMask == 0) { return 'Please select the days you wish to walk';}
         if ($gradeMask == 0) { return 'Please select the grade of your walks' ;}
 
-        $s_date = DateTime::createFromFormat('dmY', $startdate);
-        $e_date = DateTime::createFromFormat('dmY', $enddate);
+        $s_date = DateTime::createFromFormat('dmYHis', $startdate);
+        $e_date = DateTime::createFromFormat('dmYHis', $enddate);
 
         // First get the data from the Ramblers Site
          $url = "http://www.ramblers.org.uk/api/lbs/walks?groups=" . $group ;
