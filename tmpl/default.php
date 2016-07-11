@@ -31,8 +31,8 @@ $class = $params->get('moduleclass_sfx');
 
 ?>
 <div class="ra_calendar_download">
-    <div class="leadingtext textdescription"> <?php echo($leadingText); ?> </div>
-    <form>
+    <div id="<?php echo($ID)?>_leadingmessage" class="leadingtext textdescription"> <?php echo($leadingText); ?> </div>
+    <form id='<?php echo($ID)?>_submitform'>
         <span class="item">
             <div class="groupselection">
                 <select id="<?php echo($ID) ?>_group" name="<?php echo($ID) ?>_group" style="margin-top:5px">
@@ -84,8 +84,13 @@ $class = $params->get('moduleclass_sfx');
             </span>
         </span>
     </form>
-    <div class="trailingtext textdescription"> <?php echo($trailingText); ?> </div>
-    <div id='<?php echo($ID) ?>_error'></div>
+    <div id='<?php echo($ID)?>_trailingmessage' class="trailingtext textdescription"> <?php echo($trailingText); ?> </div>
+    <div id='<?php echo($ID) ?>_usermessage'></div>
+    <div id='<?php echo($ID) ?>_tryagain' style='display:none'>
+        <br/>
+        <input type="button" id="<?php echo($ID) ?>_tryagain" class="button" value="Try Again" />
+        <br/>&nbsp;
+    </div>
     <div style="display:none">
         <form id="<?php echo($ID) ?>_finalstage" action="<?php echo JURI::root() ?>modules/mod_ra_calendar_download/calendar_download.php" method="POST">
             <textarea id="<?php echo($ID) ?>_icsdata" name="icsdata"></textarea>
