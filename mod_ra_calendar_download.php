@@ -43,7 +43,21 @@ jQuery(function ($) {
      * Once the response is recieved it is stored in a form and submitted to calendar_download.php
      * which returns if with the correct html headers set. 
      */
+    $(document).on('click', 'input[id=tryagain]', function () {
+        $('form#submitform').show();
+        $('div#leadingmessage').show();
+        $('div#trailingmessage').show();
+        $('#usermessage').html('');
+        $('div#tryagain').hide();
+    });
 
+    /*
+     * Create a function to handle the click event of the form.
+     * This function needs to collate the information and submit to an Ajax call to the server. 
+     * The response is the ICS information or a message.
+     * Once the response is recieved it is stored in a form and submitted to calendar_download.php
+     * which returns if with the correct html headers set. 
+     */
     $(document).on('click', 'input[id=submit]', function () {
             var dateMask = 0;
             dateMask = dateMask + ($('input[name=monday]').is(':checked') * 1); 
@@ -88,14 +102,19 @@ jQuery(function ($) {
                             // Can you determine how many walks have been downloaded?
         
                             // Tell the user their walks are being downloaded
-                            $('#error').html('Your walks are being downloaded.');
+                            $('form#submitform').hide();
+                            $('div#leadingmessage').hide();
+                            $('div#trailingmessage').hide();
+                            $('div#tryagain').show();
+                            $('#usermessage').html('Your walks are being downloaded.');
                             // valid response so submit the form
                             $('form#finalstage').submit();
+        
                         }
                         else
                         {
                             // Write the error out for the user
-                            $('#error').html(response);
+                            $('#usermessage').html(response);
                         }
                     }
         });
@@ -157,7 +176,11 @@ $js = str_ireplace('#distance', '#' . $ID . '_distance', $js );
 $js = str_ireplace('#icsdata', '#' . $ID . '_icsdata', $js );
 $js = str_ireplace('#finalstage', '#' . $ID . '_finalstage', $js );
 $js = str_ireplace('#group', '#' . $ID . '_group', $js );
-$js = str_ireplace('#error', '#' . $ID . '_error', $js );
+$js = str_ireplace('#usermessage', '#' . $ID . '_usermessage', $js );
+$js = str_ireplace('#trailingmessage', '#' . $ID . '_trailingmessage', $js );
+$js = str_ireplace('#leadingmessage', '#' . $ID . '_leadingmessage', $js );
+$js = str_ireplace('#submitform', '#' . $ID . '_submitform', $js );
+$js = str_ireplace('#tryagain', '#' . $ID . '_tryagain', $js );
 $js = str_ireplace('#download_details', '#' . $ID . '_download_details', $js );
 $js = str_ireplace('#more_options', '#' . $ID . '_more_options', $js );
 
@@ -177,6 +200,7 @@ $js = str_ireplace('=strenuous', '=' . $ID . '_strenuous', $js );
 $js = str_ireplace('=technical', '=' . $ID . '_technical', $js );
 
 $js = str_ireplace('id=submit', 'id=' . $ID . '_submit', $js );
+$js = str_ireplace('id=tryagain', 'id=' . $ID . '_tryagain', $js );
 $js = str_ireplace('xx-slider', 'xx-' . $ID . 'slider', $js );
 
 // Instantiate global document object
