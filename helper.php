@@ -17,7 +17,7 @@ class modRaCalendarDownloadHelper
     {
         // Ensure we have a custom Error Handler.
         set_error_handler("customError");
-
+        
         $input = JFactory::getApplication()->input;
         $data  = $input->get('data');
 
@@ -92,14 +92,17 @@ class modRaCalendarDownloadHelper
             }
             else
             {
+               restore_error_handler();
                return "No walks returned - Please check your filter criteria";
             }
          }
          else
          {
+            restore_error_handler();
             return "No walks returned - Please check your dates are in the format dd/mm/yyyy (e.g. 07/02/2016)";
          }
 
+         restore_error_handler();
          return $output ;
     }
 }
