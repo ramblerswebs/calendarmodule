@@ -14,8 +14,8 @@ defined('_JEXEC') or die('Restricted access');
 // Ensure we load the full jQuery library with datepicker
 JHtml::_('jquery.framework');
 $document = JFactory::getDocument();
-$document->addScript('http://code.jquery.com/ui/1.10.3/jquery-ui.js');
-$document->addStyleSheet('http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css', 'text/css');
+$document->addScript('https://code.jquery.com/ui/1.10.3/jquery-ui.js');
+$document->addStyleSheet('https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css', 'text/css');
 $document->addStyleSheet(JURI::base() . 'modules/mod_ra_calendar_download/scripts/css/ra_calendar_download.css', 'text/css');
 
 // Add the script to enable datepicker
