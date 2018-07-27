@@ -7,7 +7,7 @@
     <authorEmail>webmaster@wiltsswindonramblers.org.uk</authorEmail>
     <copyright>Copyright (C) 2016 Wiltshire Ramblers</copyright>
     <license>GNU General Public License version 2, or later.</license>
-    <version>0.3.4</version>
+    <version>0.3.5</version>
     <description>Calendar File Download</description>
 
     <files>
@@ -57,7 +57,21 @@
               <field name="buttonText" type="text" default="Download" size="100" label="BUTTON_TEXT"/>
               <field name="leadingText" type="textarea" default="Leading Text" rows="5" cols="20" label="PRE_TEXT"/>
               <field name="trailingText" type="textarea" default="Trailing Text" rows="5" cols="20" label="POST_TEXT"/>
-              <field name="moduleclass_sfx" type="text" default="" label="MOD_ICAL_MODULE_CLASS_SUFFIX" description="MOD_ICAL_MODULE_CLASS_SUFFIX_DESC" />
+              <field name="moduleclass_sfx" type="text" default="" label="MOD_ICAL_MODULE_CLASS_SUFFIX" description="Used to Colour / Style the Module" />
+              <field name="rsstimeout" type="list" default="30" required="true" label="Select Timeout" description="RSS Timeout">
+                  <option value="5">5 Seconds</option>
+                  <option value="10">10 Seconds</option>
+                  <option value="15">15 Seconds</option>
+                  <option value="20">20 Seconds</option>
+                  <option value="25">25 Seconds</option>
+                  <option value="30">30 Seconds</option>
+                  <option value="35">35 Seconds</option>
+                  <option value="40">40 Seconds</option>
+                  <option value="45">45 Seconds</option>
+                  <option value="50">50 Seconds</option>
+                  <option value="55">55 Seconds</option>
+                  <option value="60">60 Seconds</option>
+              </field>
             </fieldset>
         </fields>
     </config>

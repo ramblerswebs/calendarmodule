@@ -17,7 +17,7 @@ class modRaCalendarDownloadHelper
     {
         // Ensure we have a custom Error Handler.
         set_error_handler("customError");
-        
+
         $input = JFactory::getApplication()->input;
         $data  = $input->get('data');
 
@@ -31,12 +31,17 @@ class modRaCalendarDownloadHelper
         $gradeMask = $items[4];
         $distanceLow = $items[5];
         $distanceHigh = $items[6];
+        $rsstimeout = intval($items[7]);
 
         if ($dayMask == 0) { return 'Please select the days you wish to walk';}
         if ($gradeMask == 0) { return 'Please select the grade of your walks' ;}
 
         $s_date = DateTime::createFromFormat('dmYHis', $startdate);
         $e_date = DateTime::createFromFormat('dmYHis', $enddate);
+
+        // Set the timeout in seconds for the feed request
+        //ini_set('max_execution_time', $rsstimeout);
+        ini_set('default_socket_timeout', $rsstimeout);
 
         // First get the data from the Ramblers Site
          $url = "http://www.ramblers.org.uk/api/lbs/walks?groups=" . $group ;

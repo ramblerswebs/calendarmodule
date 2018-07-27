@@ -18,7 +18,7 @@ class mod_ra_calendar_downloadInstallerScript
             echo '<p>Please wait while we download/update the current Ramblers Area & Group Information</p>';
             // Get a db connection.
             $db = JFactory::getDbo();
-            
+
             $delete_query = $db->getQuery(true);
             $delete_query->delete($db->quoteName('#__ra_groups'));
             $db->setQuery($delete_query);
@@ -26,7 +26,7 @@ class mod_ra_calendar_downloadInstallerScript
 
             unset($delete_query);
             unset($result);
-            
+
             // Now we need to get the Group information
             $ra_feed = new RJsongroupsFeed("http://www.ramblers.org.uk/api/lbs/groups/");
             $groups = $ra_feed->getGroups()->allGroups();
@@ -79,7 +79,7 @@ class mod_ra_calendar_downloadInstallerScript
 	function update($parent)
 	{
             $db = JFactory::getDbo();
-            
+
             // First Delete all the records
             $query = $db->getQuery(true);
             $query->delete($db->quoteName('#__ra_groups'));
@@ -88,7 +88,7 @@ class mod_ra_calendar_downloadInstallerScript
             unset($result);
             unset($query);
             unset($db);
-            
+
             // Re-install the groups
             $this->install($parent);
         }
@@ -357,6 +357,7 @@ class RFeedhelper {
         $url = trim($feedfilename);
         $content = '';
         ini_set('max_execution_time', 120);
+				ini_set('default_socket_timeout', 120);
         $cachedFile = $this->createCachedFileFromUrl($feedfilename);
         if ($cachedFile <> '') {
             $content = file_get_contents($cachedFile);
@@ -364,17 +365,21 @@ class RFeedhelper {
                 $content = '';
             }
         }
+				// echo '<p>validating return status of records for ' . $feedfilename . '</p>';
         switch ($this->status) {
             case self::OK:
                 return $content;
                 break;
             case self::READEMPTY:
+						    echo "<p>Status Returned of READEMPTY</p>";
                 return '';
                 break;
             case self::READFAILED:
+								echo '<p>Status Returned of READFAILED</p>';
                 return NULL;
                 break;
             default:
+						    echo "<p>Status Returned of DEFAULT</p>";
                 return NULL;
                 break;
         }
@@ -405,6 +410,7 @@ class RFeedhelper {
                 if (ini_get('allow_url_fopen')) {
                     // file_get_contents
                     if ($this->urlExists($url)) {
+											  ini_set("default_socket_timeout", 120);
                         $fgcOutput = file_get_contents($url);
                         if ($fgcOutput === false) {
                             $status = self::READFAILED;
