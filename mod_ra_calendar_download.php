@@ -82,7 +82,8 @@ jQuery(function ($) {
                           dateMask + '-' + 
                           gradeMask + '-' + 
                           jQuery( "#slider-range" ).slider( "values", 0 ) + '-' + 
-                          jQuery( "#slider-range" ).slider( "values", 1 )  ,
+                          jQuery( "#slider-range" ).slider( "values", 1 ) + '-' +
+                          $('#rsstimeout').val(),
                 request = {
                                     'option' : 'com_ajax',
                                     'module' : 'ra_calendar_download',
@@ -183,6 +184,7 @@ $js = str_ireplace('#submitform', '#' . $ID . '_submitform', $js );
 $js = str_ireplace('#tryagain', '#' . $ID . '_tryagain', $js );
 $js = str_ireplace('#download_details', '#' . $ID . '_download_details', $js );
 $js = str_ireplace('#more_options', '#' . $ID . '_more_options', $js );
+$js = str_ireplace('#rsstimeout', '#' . $ID . '_rsstimeout', $js );
 
 $js = str_ireplace('=monday', '=' . $ID . '_monday', $js );
 $js = str_ireplace('=tuesday', '=' . $ID . '_tuesday', $js );

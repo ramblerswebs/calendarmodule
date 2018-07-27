@@ -28,6 +28,7 @@ $trailingText = $params->get('trailingText');
 $buttonText = $params->get('buttonText');
 $ramblers_groups = $params->get('groups');
 $class = $params->get('moduleclass_sfx');
+$rsstimeout = $params->get('rsstimeout');
 
 ?>
 <div class="ra_calendar_download">
@@ -82,9 +83,15 @@ $class = $params->get('moduleclass_sfx');
                 </div>
                 <div id="<?php echo($ID) ?>_slider-range"></div>
             </span>
+            <span id="<?php echo($ID) ?>_hidden_details" style="display:none">
+                <input type="text" id="<?php echo($ID) ?>_rsstimeout" value="<?php echo($rsstimeout)?>">
+            </span>
         </span>
     </form>
     <div id='<?php echo($ID)?>_trailingmessage' class="trailingtext textdescription"> <?php echo($trailingText); ?> </div>
+    <div>
+        <a href="https://github.com/ramblerswebs/calendarmodule/wiki/6.-User-Guide" target="blank">Click Here for User Guide</a>
+    </div>
     <div id='<?php echo($ID) ?>_usermessage'></div>
     <div id='<?php echo($ID) ?>_tryagain' style='display:none'>
         <br/>
