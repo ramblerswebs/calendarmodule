@@ -40,11 +40,15 @@ class modRaCalendarDownloadHelper
         $e_date = DateTime::createFromFormat('dmYHis', $enddate);
 
         // Set the timeout in seconds for the feed request
+        if ($rsstimeout <= 0)
+        {
+            // If nothing has been set then this is a legacy configuration (pre 0.3.5) so use a default. 
+            $rsstimeout = 30 ;
+        }
         //ini_set('max_execution_time', $rsstimeout);
         ini_set('default_socket_timeout', $rsstimeout);
-
         // First get the data from the Ramblers Site
-         $url = "http://www.ramblers.org.uk/api/lbs/walks?groups=" . $group ;
+        $url = "http://www.ramblers.org.uk/api/lbs/walks?groups=" . $group ;
 
          // Get the JSON information
          $walkdata = file_get_contents($url);
