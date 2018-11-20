@@ -32,7 +32,7 @@ jQuery(function ($) {
         }
         else
         {
-            $('#more_options').text("Fewer Options");
+            $('#more_options').text("Few Options");
         }
     });
    
